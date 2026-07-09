@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 
-export const Route = createFileRoute("/documents")({
+export const Route = createFileRoute("/documents/")({
   head: () => ({ meta: [{ title: "Documents — DocMind" }] }),
   component: DocumentsPage,
 });
