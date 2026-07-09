@@ -22,7 +22,6 @@ export default function Landing() {
         <Features />
         <Workflow />
         <UseCases />
-        <FAQ />
       </main>
       <LandingStructuredData />
       <Footer />
@@ -44,9 +43,6 @@ function Header() {
           </a>
           <a href="#use-cases" className="hover:text-foreground">
             Use cases
-          </a>
-          <a href="#faq" className="hover:text-foreground">
-            FAQ
           </a>
           <a
             href="https://github.com/Flamki/docmind-source-truth"
@@ -200,48 +196,6 @@ function UseCases() {
   );
 }
 
-function FAQ() {
-  const qs = [
-    {
-      q: "Can I use this without uploading private docs?",
-      a: "Yes. The workspace starts empty, so you control which documents are added.",
-    },
-    {
-      q: "Does DocMind replace reading?",
-      a: "No. It helps you read faster, find sources, and verify claims. You still stay in the loop.",
-    },
-    {
-      q: "How are citations shown?",
-      a: "Every answer includes chips linking to the page and paragraph the claim came from.",
-    },
-    {
-      q: "Can I delete my documents?",
-      a: "Yes. Documents can be removed any time from the Documents page or the detail view.",
-    },
-  ];
-  return (
-    <section id="faq" className="border-t border-border">
-      <div className="mx-auto max-w-3xl px-6 py-20">
-        <div className="font-mono text-xs uppercase tracking-widest text-primary">FAQ</div>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-          Common questions.
-        </h2>
-        <div className="mt-10 divide-y divide-border rounded-xl border border-border bg-surface">
-          {qs.map((f) => (
-            <details key={f.q} className="group px-5 py-4">
-              <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-medium">
-                {f.q}
-                <span className="text-text-muted transition group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-3 text-sm text-text-secondary">{f.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function LandingStructuredData() {
   const software = {
     "@context": "https://schema.org",
@@ -256,56 +210,11 @@ function LandingStructuredData() {
     },
   };
 
-  const faq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Can I use this without uploading private docs?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. The workspace starts empty, so you control which documents are added.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does DocMind replace reading?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. It helps you read faster, find sources, and verify claims. You still stay in the loop.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How are citations shown?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Every answer includes chips linking to the page and paragraph the claim came from.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can I delete my documents?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Documents can be removed any time from the Documents page or the detail view.",
-        },
-      },
-    ],
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(software) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(software) }}
+    />
   );
 }
 
