@@ -2,17 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Logo } from "@/components/app/logo";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Check,
-  Github,
-  FileText,
-  Sparkles,
-  ShieldCheck,
-  Upload,
-  MessageSquare,
-  Quote,
-} from "lucide-react";
+import { ArrowRight, Github, ShieldCheck, Upload, MessageSquare } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "DocMind - Source-backed AI document workspace",
@@ -58,7 +48,10 @@ function Header() {
           <a href="#faq" className="hover:text-foreground">
             FAQ
           </a>
-          <a href="#" className="inline-flex items-center gap-1.5 hover:text-foreground">
+          <a
+            href="https://github.com/Flamki/docmind-source-truth"
+            className="inline-flex items-center gap-1.5 hover:text-foreground"
+          >
             <Github className="h-4 w-4" /> GitHub
           </a>
         </nav>
@@ -78,104 +71,28 @@ function Header() {
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[1.05fr_1fr] lg:py-28">
-        <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs text-text-secondary">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Citation-first AI workspace
-          </div>
-          <h1 className="mt-6 text-[44px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">
-            Understand any document with <span className="citation-highlight">source-backed</span>{" "}
-            AI.
-          </h1>
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-text-secondary md:text-base">
-            Upload PDFs, reports, notes, or briefs. Ask questions and get clear answers with
-            citations you can verify - down to the page and paragraph.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href="/dashboard">
-              <Button size="lg" className="h-11 gap-1.5 px-5">
-                Try the workspace <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <a href="#">
-              <Button size="lg" variant="outline" className="h-11 gap-1.5 px-5">
-                <Github className="h-4 w-4" /> View GitHub
-              </Button>
-            </a>
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-text-muted">
-            {[
-              "No hallucination guessing",
-              "Citation-first answers",
-              "Built for students, researchers, and job seekers",
-            ].map((t) => (
-              <div key={t} className="flex items-center gap-1.5">
-                <Check className="h-3.5 w-3.5 text-primary" />
-                {t}
-              </div>
-            ))}
-          </div>
+      <div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-4xl flex-col items-center justify-center px-6 py-20 text-center">
+        <h1 className="text-[44px] font-semibold leading-[1.05] tracking-tight md:text-[64px]">
+          Understand any document with <span className="citation-highlight">source-backed</span> AI.
+        </h1>
+        <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-text-secondary md:text-base">
+          Upload PDFs, reports, notes, or briefs. Ask questions and get clear answers with citations
+          you can verify - down to the page and paragraph.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Link href="/dashboard">
+            <Button size="lg" className="h-11 gap-1.5 px-5">
+              Try the workspace <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
+          <a href="https://github.com/Flamki/docmind-source-truth">
+            <Button size="lg" variant="outline" className="h-11 gap-1.5 px-5">
+              <Github className="h-4 w-4" /> View GitHub
+            </Button>
+          </a>
         </div>
-        <HeroPreview />
       </div>
     </section>
-  );
-}
-
-function HeroPreview() {
-  return (
-    <div className="relative">
-      <div className="absolute -inset-8 -z-10 rounded-3xl bg-gradient-to-br from-accent-soft/60 to-transparent blur-2xl" />
-      <div className="rounded-xl border border-border bg-surface shadow-[0_1px_0_rgba(0,0,0,0.02),0_20px_50px_-20px_rgba(0,0,0,0.12)]">
-        <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
-          <div className="flex gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full bg-surface-soft" />
-            <div className="h-2.5 w-2.5 rounded-full bg-surface-soft" />
-            <div className="h-2.5 w-2.5 rounded-full bg-surface-soft" />
-          </div>
-          <div className="font-mono text-[11px] text-text-muted">docmind.app/documents</div>
-          <div className="w-8" />
-        </div>
-        <div className="border-b border-border px-4 py-3">
-          <div className="flex items-center gap-2 text-sm">
-            <FileText className="h-4 w-4 text-primary" />
-            <span className="font-medium">No document selected</span>
-            <span className="ml-auto rounded-full border border-[color:var(--color-success)]/20 bg-[color:var(--color-success)]/10 px-2 py-0.5 text-[10px] font-medium text-[color:var(--color-success)]">
-              Empty
-            </span>
-          </div>
-        </div>
-        <div className="space-y-4 p-4">
-          <div className="flex justify-end">
-            <div className="max-w-[75%] rounded-lg rounded-br-sm bg-surface-soft px-3 py-2 text-sm">
-              Ask a question after upload
-            </div>
-          </div>
-          <div className="space-y-2.5">
-            <div className="flex items-center gap-1.5 text-xs text-text-muted">
-              <Sparkles className="h-3 w-3" /> DocMind
-            </div>
-            <p className="text-sm leading-relaxed text-foreground">
-              Upload and index a document before answers and citations are generated.
-            </p>
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {[
-                { p: 1, t: "Source page" },
-                { p: 2, t: "Supporting context" },
-              ].map((c) => (
-                <span
-                  key={c.p}
-                  className="inline-flex items-center gap-1 rounded-md border border-accent-border/60 bg-accent-soft px-2 py-1 text-[11px] font-medium text-[oklch(0.5_0.14_55)]"
-                >
-                  <Quote className="h-3 w-3" /> Page {c.p} - {c.t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -404,7 +321,10 @@ function Footer() {
           <span className="text-xs text-text-muted">- Open source document AI workspace</span>
         </div>
         <div className="flex items-center gap-5 text-xs text-text-secondary">
-          <a href="#" className="hover:text-foreground">
+          <a
+            href="https://github.com/Flamki/docmind-source-truth"
+            className="hover:text-foreground"
+          >
             GitHub
           </a>
           <Link href="/dashboard" className="hover:text-foreground">
