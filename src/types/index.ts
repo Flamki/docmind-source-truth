@@ -31,7 +31,6 @@ export interface ChatMessage {
   citations?: Citation[];
 }
 
-export type AppRoute =
-  "/" | "/dashboard" | "/documents" | "/upload" | "/settings" | "/sign-in" | "/sign-up";
+export type AppRoute = "/" | "/documents" | "/settings" | "/sign-in" | "/sign-up";
 
 export type MutationState = "idle" | "pending" | "success" | "error";

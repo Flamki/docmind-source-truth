@@ -14,7 +14,7 @@ export default function ErrorPage({ reset }: { reset: () => void }) {
         </p>
         <div className="mt-6 flex justify-center gap-2">
           <Button onClick={reset}>Try again</Button>
-          <Link href="/dashboard">
+          <Link href="/documents">
             <Button variant="outline">Open workspace</Button>
           </Link>
         </div>

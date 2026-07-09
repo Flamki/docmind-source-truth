@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Logo } from "@/components/app/logo";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, ShieldCheck, Upload, MessageSquare } from "lucide-react";
+import { ArrowRight, FileText, Github, ShieldCheck, MessageSquare } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "DocMind - Source-backed AI document workspace",
   description:
-    "Upload documents, ask focused questions, and verify every answer with page-level citations in DocMind.",
+    "Manage documents, ask focused questions, and verify every answer with page-level citations in DocMind.",
   alternates: {
     canonical: "/",
   },
@@ -69,11 +69,11 @@ function Hero() {
           Understand any document with <span className="citation-highlight">source-backed</span> AI.
         </h1>
         <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-text-secondary md:text-base">
-          Upload PDFs, reports, notes, or briefs. Ask questions and get clear answers with citations
+          Add PDFs, reports, notes, or briefs. Ask questions and get clear answers with citations
           you can verify - down to the page and paragraph.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link href="/dashboard">
+          <Link href="/documents">
             <Button size="lg" className="h-11 gap-1.5 px-5">
               Try the workspace <ArrowRight className="h-4 w-4" />
             </Button>
@@ -92,9 +92,9 @@ function Hero() {
 function Features() {
   const items = [
     {
-      icon: Upload,
-      title: "Upload and organize",
-      body: "Store docs in one clean workspace with tags, status, and quick search.",
+      icon: FileText,
+      title: "Organize sources",
+      body: "Keep documents in one clean workspace with tags, status, and quick search.",
     },
     {
       icon: MessageSquare,
@@ -134,7 +134,7 @@ function Features() {
 
 function Workflow() {
   const steps = [
-    { n: "01", t: "Upload document", d: "Drop in a PDF, DOCX, or TXT. We extract and index it." },
+    { n: "01", t: "Add document", d: "Bring in a PDF, DOCX, or TXT. We extract and index it." },
     {
       n: "02",
       t: "Ask a question",
@@ -233,7 +233,7 @@ function Footer() {
           >
             GitHub
           </a>
-          <Link href="/dashboard" className="hover:text-foreground">
+          <Link href="/documents" className="hover:text-foreground">
             Open workspace
           </Link>
           <span className="text-text-muted">MIT License</span>

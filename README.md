@@ -7,14 +7,13 @@
 **GitHub -> https://github.com/Flamki/docmind-source-truth**
 **Live -> https://docmind-source-truth.vercel.app**
 
-DocMind is a polished full-stack product submission for the Digital Heroes Full Stack Developer Trial. It follows the handbook's DocQuery-style product direction: upload source documents, ask focused questions, inspect citations, and manage a document workspace with dashboard, search, filters, settings, dark mode, and error states.
+DocMind is a polished full-stack product submission for the Digital Heroes Full Stack Developer Trial. It follows the handbook's DocQuery-style product direction: manage source documents, ask focused questions, inspect citations, and use a focused document workspace with search, filters, settings, dark mode, and error states.
 
 ## Features
 
-- Upload PDF, DOCX, or TXT documents with clear processing states.
+- Manage PDF, DOCX, or TXT documents with clear processing states.
 - Browse, search, filter, sort, select, and bulk-act on documents.
 - Ask questions against a selected document and inspect page-level citations.
-- Use a dashboard with activity, storage, and citation analytics.
 - Navigate with a sidebar, breadcrumbs, mobile tabs, and Cmd/Ctrl+K palette.
 - Handle empty, loading, success, not-found, and caught-error states.
 - Switch between light and dark themes with shared design tokens.
@@ -75,11 +74,11 @@ The UI includes sign-in and sign-up screens, but no seeded account is included. 
 ## Roadmap
 
 - [x] Polished document workspace UI.
-- [x] Dashboard, document CRUD surfaces, upload flow, command palette, dark mode.
+- [x] Document CRUD surfaces, command palette, dark mode.
 - [x] Trial-ready README, docs, OSS files, CI, SEO crawl files.
 - [ ] Wire Supabase/Neon Postgres persistence.
 - [ ] Wire auth with Supabase Auth, Clerk, or Auth.js.
-- [ ] Add Playwright e2e tests for sign-in, upload, search, and document Q&A.
+- [ ] Add Playwright e2e tests for sign-in, search, and document Q&A.
 - [x] Deploy to Vercel and publish the live URL.
 
 ## Screenshots
@@ -87,10 +86,8 @@ The UI includes sign-in and sign-up screens, but no seeded account is included. 
 Place final screenshots in `docs/screenshots/` after local or production QA:
 
 - Landing page
-- Dashboard
 - Documents table
 - Document chat with citations
-- Upload flow
 
 ## Digital Heroes Trial Credit
 

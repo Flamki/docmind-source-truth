@@ -8,9 +8,8 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@/components/ui/command";
-import { Upload, FileText, LayoutDashboard, Settings, MessageSquare, Moon } from "lucide-react";
+import { FileText, Settings, MessageSquare, Moon } from "lucide-react";
 
 export function CommandPalette({
   open,
@@ -34,9 +33,6 @@ export function CommandPalette({
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Actions">
-          <CommandItem onSelect={() => go("/upload")}>
-            <Upload className="mr-2 h-4 w-4" /> Upload document
-          </CommandItem>
           <CommandItem onSelect={() => go("/documents")}>
             <FileText className="mr-2 h-4 w-4" /> Search documents
           </CommandItem>
@@ -44,11 +40,7 @@ export function CommandPalette({
             <Moon className="mr-2 h-4 w-4" /> Toggle dark mode
           </CommandItem>
         </CommandGroup>
-        <CommandSeparator />
         <CommandGroup heading="Navigation">
-          <CommandItem onSelect={() => go("/dashboard")}>
-            <LayoutDashboard className="mr-2 h-4 w-4" /> Go to dashboard
-          </CommandItem>
           <CommandItem onSelect={() => go("/settings")}>
             <Settings className="mr-2 h-4 w-4" /> Go to settings
           </CommandItem>

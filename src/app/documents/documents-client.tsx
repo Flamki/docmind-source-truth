@@ -22,7 +22,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LayoutGrid, List, MoreHorizontal, Search, Tag, Trash2, Upload, X } from "lucide-react";
+import { FileText, LayoutGrid, List, MoreHorizontal, Search, Tag, Trash2, X } from "lucide-react";
 import { useMemo, useState } from "react";
 
 const documents: AppDocument[] = [];
@@ -72,11 +72,6 @@ export function DocumentsClient() {
               Manage every source in your workspace.
             </p>
           </div>
-          <Link href="/upload">
-            <Button className="gap-1.5">
-              <Upload className="h-4 w-4" /> Upload document
-            </Button>
-          </Link>
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-2 rounded-xl border border-border bg-surface p-3">
@@ -374,17 +369,12 @@ function EmptyDocs() {
   return (
     <div className="rounded-xl border border-dashed border-border bg-surface p-16 text-center">
       <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft">
-        <Upload className="h-5 w-5 text-primary" />
+        <FileText className="h-5 w-5 text-primary" />
       </div>
       <h3 className="mt-5 text-lg font-semibold">Your workspace is empty</h3>
       <p className="mx-auto mt-2 max-w-sm text-sm text-text-secondary">
-        Upload your first document and start asking questions with source-backed answers.
+        Documents will appear here once storage and indexing are connected.
       </p>
-      <div className="mt-6 flex justify-center gap-2">
-        <Link href="/upload">
-          <Button>Upload document</Button>
-        </Link>
-      </div>
     </div>
   );
 }

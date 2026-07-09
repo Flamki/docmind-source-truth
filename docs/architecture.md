@@ -22,7 +22,7 @@ User -> AuditEvent
 | `conversations`   | `id`, `document_id`, `created_by`, `title`, `created_at`                                          | has messages                            |
 | `messages`        | `id`, `conversation_id`, `role`, `content`, `created_at`                                          | may have citations                      |
 | `citations`       | `id`, `message_id`, `chunk_id`, `page`, `snippet`, `relevance`                                    | links answers to source chunks          |
-| `audit_events`    | `id`, `actor_id`, `workspace_id`, `entity_type`, `entity_id`, `action`, `created_at`              | immutable activity log                  |
+| `audit_events`    | `id`, `actor_id`, `workspace_id`, `entity_type`, `entity_id`, `action`, `created_at`              | immutable event ledger                  |
 
 ## Auth And Authorization
 
@@ -35,16 +35,16 @@ Use shared Zod schemas at every boundary:
 - Form validation before submit.
 - Server action/API validation before mutation.
 - Environment validation during boot.
-- Upload validation by MIME type and file size.
+- File validation by MIME type and file size.
 
 ## Retrieval Flow
 
 ```text
-Upload -> validate -> store file metadata -> extract text -> chunk by page/section
+Add file -> validate -> store file metadata -> extract text -> chunk by page/section
 -> create embeddings -> save chunks -> ask question -> retrieve relevant chunks
 -> generate answer -> persist message + citations -> render source chips
 ```
 
 ## Deployment
 
-Deploy on Vercel or Netlify. Configure every variable from `.env.example` in the platform dashboard, run database migrations against production, and test a fresh incognito session against the live URL before submission.
+Deploy on Vercel or Netlify. Configure every variable from `.env.example` in project settings, run database migrations against production, and test a fresh incognito session against the live URL before submission.

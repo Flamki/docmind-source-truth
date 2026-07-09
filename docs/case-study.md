@@ -10,7 +10,7 @@ DocMind narrows the product around one job: ask a document a question and verify
 
 ## Result
 
-The current app is a polished Next.js App Router product shell with landing page, dashboard, document management, upload flow, document Q&A, citations, settings, dark mode, command palette, SEO files, and open-source repo structure. The next production step is connecting Supabase/Neon Postgres and real auth.
+The current app is a polished Next.js App Router product shell with landing page, document management, document Q&A, citations, settings, dark mode, command palette, SEO files, and open-source repo structure. The next production step is connecting Supabase/Neon Postgres and real auth.
 
 ## What I Learned
 

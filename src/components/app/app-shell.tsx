@@ -2,18 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  FileText,
-  Upload,
-  Activity,
-  Settings,
-  Search,
-  Bell,
-  Command,
-  Plus,
-  ChevronRight,
-} from "lucide-react";
+import { FileText, Settings, Search, Bell, Command, ChevronRight } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { Logo } from "./logo";
 import { cn } from "@/lib/utils";
@@ -21,10 +10,7 @@ import { Button } from "@/components/ui/button";
 import { CommandPalette } from "./command-palette";
 
 const nav = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/documents", label: "Documents", icon: FileText },
-  { href: "/upload", label: "Upload", icon: Upload },
-  { href: "/dashboard#activity", label: "Activity", icon: Activity },
   { href: "/settings", label: "Settings", icon: Settings },
 ] as const;
 
@@ -46,10 +32,7 @@ function Sidebar() {
       </div>
       <nav className="flex-1 space-y-0.5 px-3">
         {nav.map((item) => {
-          const active =
-            item.href === "/dashboard" || item.href === "/dashboard#activity"
-              ? pathname === "/dashboard"
-              : pathname === item.href || pathname.startsWith(item.href + "/");
+          const active = pathname === item.href || pathname.startsWith(item.href + "/");
           const Icon = item.icon;
           return (
             <Link
@@ -140,12 +123,6 @@ function TopBar({
       <button className="hidden h-9 w-9 items-center justify-center rounded-md border border-border bg-surface text-text-secondary hover:text-foreground md:flex">
         <Bell className="h-4 w-4" />
       </button>
-      <Link href="/upload">
-        <Button size="sm" className="h-9 gap-1.5">
-          <Plus className="h-4 w-4" />
-          <span className="hidden sm:inline">New upload</span>
-        </Button>
-      </Link>
     </header>
   );
 }

@@ -17,7 +17,7 @@ export function SignInClient() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          router.push("/dashboard");
+          router.push("/documents");
         }}
         className="mt-6 space-y-4"
       >
