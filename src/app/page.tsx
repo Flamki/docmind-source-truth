@@ -59,9 +59,6 @@ function Header() {
           <Link href="/sign-in" className="text-sm text-text-secondary hover:text-foreground">
             Sign in
           </Link>
-          <Link href="/sign-up">
-            <Button size="sm">Start free</Button>
-          </Link>
         </div>
       </div>
     </header>
