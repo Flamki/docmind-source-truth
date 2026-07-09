@@ -3,7 +3,7 @@ import { AppShell } from "@/components/app/app-shell";
 import { activityFeed, mockDocuments, stats, suggestedQuestions } from "@/lib/mock-data";
 import { StatusPill } from "@/components/app/status-pill";
 import { DocIcon } from "@/components/app/doc-icon";
-import { Button } from "@/components/app/../ui/button";
+import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Upload, TrendingUp, MessageSquare, Quote, HardDrive, FileText } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard")({

@@ -9,12 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UploadRouteImport } from './routes/upload'
 import { Route as SignUpRouteImport } from './routes/sign-up'
 import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ErrorRouteImport } from './routes/error'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocumentsIndexRouteImport } from './routes/documents.index'
+import { Route as DocumentsSlugRouteImport } from './routes/documents.$slug'
 
+const UploadRoute = UploadRouteImport.update({
+  id: '/upload',
+  path: '/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignUpRoute = SignUpRouteImport.update({
   id: '/sign-up',
   path: '/sign-up',
@@ -25,9 +35,24 @@ const SignInRoute = SignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ErrorRoute = ErrorRouteImport.update({
+  id: '/error',
+  path: '/error',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R404Route = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -40,47 +65,110 @@ const DocumentsIndexRoute = DocumentsIndexRouteImport.update({
   path: '/documents/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsSlugRoute = DocumentsSlugRouteImport.update({
+  id: '/documents/$slug',
+  path: '/documents/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/dashboard': typeof DashboardRoute
+  '/error': typeof ErrorRoute
+  '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
+  '/upload': typeof UploadRoute
+  '/documents/$slug': typeof DocumentsSlugRoute
   '/documents/': typeof DocumentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/dashboard': typeof DashboardRoute
+  '/error': typeof ErrorRoute
+  '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
+  '/upload': typeof UploadRoute
+  '/documents/$slug': typeof DocumentsSlugRoute
   '/documents': typeof DocumentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/dashboard': typeof DashboardRoute
+  '/error': typeof ErrorRoute
+  '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
+  '/upload': typeof UploadRoute
+  '/documents/$slug': typeof DocumentsSlugRoute
   '/documents/': typeof DocumentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/sign-in' | '/sign-up' | '/documents/'
+  fullPaths:
+    | '/'
+    | '/404'
+    | '/dashboard'
+    | '/error'
+    | '/settings'
+    | '/sign-in'
+    | '/sign-up'
+    | '/upload'
+    | '/documents/$slug'
+    | '/documents/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/sign-in' | '/sign-up' | '/documents'
-  id: '__root__' | '/' | '/dashboard' | '/sign-in' | '/sign-up' | '/documents/'
+  to:
+    | '/'
+    | '/404'
+    | '/dashboard'
+    | '/error'
+    | '/settings'
+    | '/sign-in'
+    | '/sign-up'
+    | '/upload'
+    | '/documents/$slug'
+    | '/documents'
+  id:
+    | '__root__'
+    | '/'
+    | '/404'
+    | '/dashboard'
+    | '/error'
+    | '/settings'
+    | '/sign-in'
+    | '/sign-up'
+    | '/upload'
+    | '/documents/$slug'
+    | '/documents/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R404Route: typeof R404Route
   DashboardRoute: typeof DashboardRoute
+  ErrorRoute: typeof ErrorRoute
+  SettingsRoute: typeof SettingsRoute
   SignInRoute: typeof SignInRoute
   SignUpRoute: typeof SignUpRoute
+  UploadRoute: typeof UploadRoute
+  DocumentsSlugRoute: typeof DocumentsSlugRoute
   DocumentsIndexRoute: typeof DocumentsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/upload': {
+      id: '/upload'
+      path: '/upload'
+      fullPath: '/upload'
+      preLoaderRoute: typeof UploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sign-up': {
       id: '/sign-up'
       path: '/sign-up'
@@ -95,11 +183,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignInRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/error': {
+      id: '/error'
+      path: '/error'
+      fullPath: '/error'
+      preLoaderRoute: typeof ErrorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -116,14 +225,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents/$slug': {
+      id: '/documents/$slug'
+      path: '/documents/$slug'
+      fullPath: '/documents/$slug'
+      preLoaderRoute: typeof DocumentsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R404Route: R404Route,
   DashboardRoute: DashboardRoute,
+  ErrorRoute: ErrorRoute,
+  SettingsRoute: SettingsRoute,
   SignInRoute: SignInRoute,
   SignUpRoute: SignUpRoute,
+  UploadRoute: UploadRoute,
+  DocumentsSlugRoute: DocumentsSlugRoute,
   DocumentsIndexRoute: DocumentsIndexRoute,
 }
 export const routeTree = rootRouteImport
