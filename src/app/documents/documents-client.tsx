@@ -22,7 +22,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { FileText, LayoutGrid, List, MoreHorizontal, Search, Tag, Trash2, X } from "lucide-react";
+import {
+  Bookmark,
+  FileText,
+  FolderPlus,
+  LayoutGrid,
+  Link2,
+  List,
+  MessageSquare,
+  MoreHorizontal,
+  Play,
+  Search,
+  Tag,
+  Trash2,
+  X,
+} from "lucide-react";
 import { useMemo, useState } from "react";
 
 const documents: AppDocument[] = [];
@@ -64,17 +78,49 @@ export function DocumentsClient() {
 
   return (
     <AppShell breadcrumb={[{ label: "/documents", to: "/documents" }, { label: "Documents" }]}>
-      <div className="mx-auto max-w-[1280px] px-4 py-8 lg:px-8">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="mx-auto w-full max-w-[1600px] px-4 py-10 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">Documents</h1>
-            <p className="mt-1.5 text-sm text-text-secondary">
-              Manage every source in your workspace.
-            </p>
+            <h1 className="text-3xl font-semibold tracking-tight">All files</h1>
+            <p className="mt-2 text-sm text-text-secondary">Manage every source in one place.</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="outline" className="h-10 gap-1.5">
+              <Bookmark className="h-4 w-4" />
+              Bookmarks
+            </Button>
+            <Button variant="outline" className="h-10 gap-1.5">
+              <FolderPlus className="h-4 w-4" />
+              Add folder
+            </Button>
+            <Button className="h-10 gap-1.5">
+              <MessageSquare className="h-4 w-4" />
+              Ask all
+            </Button>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-2 rounded-xl border border-border bg-surface p-3">
+        <div className="mt-12 rounded-xl border border-dashed border-border bg-surface/70 px-6 py-10 text-center">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-background text-primary shadow-sm">
+            <FileText className="h-5 w-5" />
+          </div>
+          <div className="mt-4 text-sm text-text-secondary">
+            Drag and drop files here or add a source when storage is connected.
+          </div>
+          <div className="mt-2 text-xs text-text-muted">PDF, DOCX, DOC, PPTX, PPT, or TXT</div>
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
+            <Button variant="outline" size="sm" className="gap-1.5">
+              <Link2 className="h-3.5 w-3.5" />
+              Web site
+            </Button>
+            <Button variant="outline" size="sm" className="gap-1.5">
+              <Play className="h-3.5 w-3.5" />
+              Video
+            </Button>
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-border bg-surface p-3">
           <div className="relative min-w-[220px] flex-1">
             <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted" />
             <Input
@@ -195,7 +241,7 @@ export function DocumentsClient() {
                 </Button>
               </div>
             ) : (
-              <EmptyDocs />
+              <EmptyTable />
             )
           ) : view === "table" ? (
             <TableView docs={filtered} selected={selected} setSelected={setSelected} />
@@ -365,16 +411,36 @@ function GridView({ docs }: { docs: AppDocument[] }) {
   );
 }
 
-function EmptyDocs() {
+function EmptyTable() {
   return (
-    <div className="rounded-xl border border-dashed border-border bg-surface p-16 text-center">
-      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft">
-        <FileText className="h-5 w-5 text-primary" />
-      </div>
-      <h3 className="mt-5 text-lg font-semibold">Your workspace is empty</h3>
-      <p className="mx-auto mt-2 max-w-sm text-sm text-text-secondary">
-        Documents will appear here once storage and indexing are connected.
-      </p>
+    <div className="overflow-hidden rounded-xl border border-border bg-surface">
+      <table className="w-full text-sm">
+        <thead className="border-b border-border bg-surface-soft text-xs text-text-secondary">
+          <tr>
+            <th className="w-12 px-5 py-4">
+              <Checkbox disabled />
+            </th>
+            <th className="px-2 py-4 text-left font-medium">Name</th>
+            <th className="hidden px-4 py-4 text-left font-medium md:table-cell">Date created</th>
+            <th className="hidden px-4 py-4 text-left font-medium lg:table-cell">Owner</th>
+            <th className="w-24 px-4 py-4 text-left font-medium">Ask</th>
+            <th className="w-10 px-4 py-4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colSpan={6} className="px-6 py-16 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft">
+                <FileText className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold">No files yet</h3>
+              <p className="mx-auto mt-2 max-w-sm text-sm text-text-secondary">
+                Your documents will appear here once storage and indexing are connected.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

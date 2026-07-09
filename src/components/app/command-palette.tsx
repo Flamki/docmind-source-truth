@@ -9,7 +9,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { FileText, Settings, MessageSquare, Moon } from "lucide-react";
+import { FileText, MessageSquare, Moon } from "lucide-react";
 
 export function CommandPalette({
   open,
@@ -41,9 +41,6 @@ export function CommandPalette({
           </CommandItem>
         </CommandGroup>
         <CommandGroup heading="Navigation">
-          <CommandItem onSelect={() => go("/settings")}>
-            <Settings className="mr-2 h-4 w-4" /> Go to settings
-          </CommandItem>
           <CommandItem onSelect={() => go("/documents")}>
             <MessageSquare className="mr-2 h-4 w-4" /> Open document workspace
           </CommandItem>
