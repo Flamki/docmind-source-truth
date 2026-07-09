@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
-import type { DocStatus } from "@/lib/mock-data";
+import type { DocStatus } from "@/types";
 
 export function StatusPill({ status, className }: { status: DocStatus; className?: string }) {
   const styles: Record<DocStatus, string> = {
-    ready: "bg-[color:var(--color-success)]/10 text-[color:var(--color-success)] border-[color:var(--color-success)]/20",
+    ready:
+      "bg-[color:var(--color-success)]/10 text-[color:var(--color-success)] border-[color:var(--color-success)]/20",
     processing: "bg-accent-soft text-primary border-accent-border/60",
     failed: "bg-destructive/10 text-destructive border-destructive/20",
   };

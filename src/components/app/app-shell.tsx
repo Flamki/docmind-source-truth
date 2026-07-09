@@ -1,8 +1,10 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   FileText,
-  MessageSquare,
   Upload,
   Activity,
   Settings,
@@ -19,16 +21,15 @@ import { Button } from "@/components/ui/button";
 import { CommandPalette } from "./command-palette";
 
 const nav = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/documents", label: "Documents", icon: FileText },
-  { to: "/documents/product-requirements", label: "Ask", icon: MessageSquare },
-  { to: "/upload", label: "Upload", icon: Upload },
-  { to: "/dashboard", label: "Activity", icon: Activity, hash: "activity" },
-  { to: "/settings", label: "Settings", icon: Settings },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/documents", label: "Documents", icon: FileText },
+  { href: "/upload", label: "Upload", icon: Upload },
+  { href: "/dashboard#activity", label: "Activity", icon: Activity },
+  { href: "/settings", label: "Settings", icon: Settings },
 ] as const;
 
 function Sidebar() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const pathname = usePathname();
   return (
     <aside className="hidden w-[260px] shrink-0 flex-col border-r border-border bg-sidebar lg:flex">
       <div className="flex h-16 items-center border-b border-border px-5">
@@ -38,7 +39,7 @@ function Sidebar() {
         <div className="flex items-center justify-between rounded-md border border-border bg-surface px-3 py-2">
           <div>
             <div className="text-[11px] uppercase tracking-wider text-text-muted">Workspace</div>
-            <div className="text-sm font-medium text-foreground">Personal</div>
+            <div className="text-sm font-medium text-foreground">Not connected</div>
           </div>
           <ChevronRight className="h-4 w-4 text-text-muted" />
         </div>
@@ -46,14 +47,14 @@ function Sidebar() {
       <nav className="flex-1 space-y-0.5 px-3">
         {nav.map((item) => {
           const active =
-            item.to === "/dashboard"
+            item.href === "/dashboard" || item.href === "/dashboard#activity"
               ? pathname === "/dashboard"
-              : pathname === item.to || pathname.startsWith(item.to + "/");
+              : pathname === item.href || pathname.startsWith(item.href + "/");
           const Icon = item.icon;
           return (
             <Link
               key={item.label}
-              to={item.to}
+              href={item.href}
               className={cn(
                 "flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition",
                 active
@@ -71,22 +72,22 @@ function Sidebar() {
         <div className="rounded-md border border-border bg-surface p-3">
           <div className="mb-2 flex items-center justify-between text-xs">
             <span className="text-text-secondary">Storage</span>
-            <span className="font-mono text-text-primary">42 / 500 MB</span>
+            <span className="font-mono text-text-primary">0 MB</span>
           </div>
           <div className="h-1.5 overflow-hidden rounded-full bg-surface-soft">
-            <div className="h-full w-[8%] rounded-full bg-primary" />
+            <div className="h-full w-0 rounded-full bg-primary" />
           </div>
           <button className="mt-3 w-full rounded-md border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground hover:bg-surface-soft">
-            Upgrade
+            Connect database
           </button>
         </div>
         <div className="mt-3 flex items-center gap-2.5 px-1">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-            AS
+            --
           </div>
           <div className="min-w-0 flex-1">
-            <div className="truncate text-sm font-medium">Ayush Singh</div>
-            <div className="truncate text-xs text-text-muted">ayush@docmind.app</div>
+            <div className="truncate text-sm font-medium">No account</div>
+            <div className="truncate text-xs text-text-muted">Sign in to sync data</div>
           </div>
         </div>
       </div>
@@ -108,7 +109,7 @@ function TopBar({
           <div key={i} className="flex items-center gap-1.5">
             {i > 0 && <ChevronRight className="h-3.5 w-3.5 text-text-muted" />}
             {b.to ? (
-              <Link to={b.to} className="hover:text-foreground">
+              <Link href={b.to} className="hover:text-foreground">
                 {b.label}
               </Link>
             ) : (
@@ -139,7 +140,7 @@ function TopBar({
       <button className="hidden h-9 w-9 items-center justify-center rounded-md border border-border bg-surface text-text-secondary hover:text-foreground md:flex">
         <Bell className="h-4 w-4" />
       </button>
-      <Link to="/upload">
+      <Link href="/upload">
         <Button size="sm" className="h-9 gap-1.5">
           <Plus className="h-4 w-4" />
           <span className="hidden sm:inline">New upload</span>
@@ -163,7 +164,11 @@ export function AppShell({
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setPaletteOpen((v) => !v);
-      } else if (e.key === "/" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+      } else if (
+        e.key === "/" &&
+        document.activeElement?.tagName !== "INPUT" &&
+        document.activeElement?.tagName !== "TEXTAREA"
+      ) {
         e.preventDefault();
         setPaletteOpen(true);
       } else if (e.key === "Escape") {

@@ -1,4 +1,6 @@
-import { useNavigate } from "@tanstack/react-router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import {
   CommandDialog,
   CommandEmpty,
@@ -8,15 +10,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import {
-  Upload,
-  FileText,
-  LayoutDashboard,
-  Settings,
-  MessageSquare,
-  Moon,
-} from "lucide-react";
-import { mockDocuments } from "@/lib/mock-data";
+import { Upload, FileText, LayoutDashboard, Settings, MessageSquare, Moon } from "lucide-react";
 
 export function CommandPalette({
   open,
@@ -25,10 +19,10 @@ export function CommandPalette({
   open: boolean;
   onOpenChange: (v: boolean) => void;
 }) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const go = (to: string) => {
     onOpenChange(false);
-    navigate({ to });
+    router.push(to);
   };
   const toggleDark = () => {
     document.documentElement.classList.toggle("dark");
@@ -58,17 +52,9 @@ export function CommandPalette({
           <CommandItem onSelect={() => go("/settings")}>
             <Settings className="mr-2 h-4 w-4" /> Go to settings
           </CommandItem>
-          <CommandItem onSelect={() => go("/documents/product-requirements")}>
-            <MessageSquare className="mr-2 h-4 w-4" /> Ask current document
+          <CommandItem onSelect={() => go("/documents")}>
+            <MessageSquare className="mr-2 h-4 w-4" /> Open document workspace
           </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Documents">
-          {mockDocuments.slice(0, 5).map((d) => (
-            <CommandItem key={d.id} onSelect={() => go(`/documents/${d.slug}`)}>
-              <FileText className="mr-2 h-4 w-4" /> {d.title}
-            </CommandItem>
-          ))}
         </CommandGroup>
       </CommandList>
     </CommandDialog>
