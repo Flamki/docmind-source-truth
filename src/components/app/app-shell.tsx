@@ -31,7 +31,7 @@ const nav = [
 function Sidebar() {
   const pathname = usePathname();
   return (
-    <aside className="hidden w-[260px] shrink-0 flex-col border-r border-border bg-sidebar lg:flex">
+    <aside className="hidden h-full w-[260px] shrink-0 flex-col border-r border-border bg-sidebar lg:flex">
       <div className="flex h-16 items-center border-b border-border px-5">
         <Logo />
       </div>
@@ -103,7 +103,7 @@ function TopBar({
   onOpenPalette: () => void;
 }) {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-border bg-background/80 px-4 backdrop-blur lg:px-6">
+    <header className="z-30 flex h-16 shrink-0 items-center gap-3 border-b border-border bg-background/80 px-4 backdrop-blur lg:px-6">
       <div className="hidden items-center gap-1.5 text-sm text-text-secondary md:flex">
         {breadcrumb.map((b, i) => (
           <div key={i} className="flex items-center gap-1.5">
@@ -180,11 +180,11 @@ export function AppShell({
   }, []);
 
   return (
-    <div className="flex min-h-screen w-full bg-background text-foreground">
+    <div className="flex h-screen w-full overflow-hidden bg-background text-foreground">
       <Sidebar />
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <TopBar breadcrumb={breadcrumb} onOpenPalette={() => setPaletteOpen(true)} />
-        <main className="flex-1">{children}</main>
+        <main className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">{children}</main>
       </div>
       <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
     </div>

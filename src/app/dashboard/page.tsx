@@ -26,7 +26,7 @@ export default function Dashboard() {
 
   return (
     <AppShell breadcrumb={[{ label: "/dashboard", to: "/dashboard" }, { label: "Dashboard" }]}>
-      <div className="mx-auto max-w-[1280px] px-4 py-8 lg:px-8">
+      <div className="mx-auto max-w-[1280px] px-4 py-5 lg:px-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">Document workspace</h1>
@@ -41,7 +41,7 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             label="Documents"
             value={stats.documents}
@@ -68,7 +68,7 @@ export default function Dashboard() {
           />
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_360px]">
+        <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_360px]">
           <section className="rounded-xl border border-border bg-surface">
             <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
               <h2 className="text-sm font-semibold">Recent documents</h2>
@@ -76,7 +76,7 @@ export default function Dashboard() {
                 View all
               </Link>
             </div>
-            <div className="p-10 text-center">
+            <div className="p-8 text-center">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft">
                 <Upload className="h-5 w-5 text-primary" />
               </div>
