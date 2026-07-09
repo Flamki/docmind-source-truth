@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:3000/</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://docmind-source-truth.vercel.app/</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
-    <loc>http://localhost:3000/dashboard</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://docmind-source-truth.vercel.app/dashboard</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
-    <loc>http://localhost:3000/documents</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://docmind-source-truth.vercel.app/documents</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
-    <loc>http://localhost:3000/upload</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://docmind-source-truth.vercel.app/upload</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
 </urlset>

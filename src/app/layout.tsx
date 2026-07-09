@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./../styles.css";
 import { Toaster } from "@/components/ui/sonner";
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://docmind-source-truth.vercel.app";
 const siteTitle = "DocMind - Source-backed AI for your documents";
 const siteDescription =
   "Upload documents, ask focused questions, and verify every answer with page-level citations in DocMind.";

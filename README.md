@@ -2,9 +2,10 @@
 
 > Citation-first AI document workspace for students, researchers, and job seekers who need answers they can verify.
 
-[![CI](https://github.com/wrlddark00-ui/docmind-source-truth/actions/workflows/ci.yml/badge.svg)](https://github.com/wrlddark00-ui/docmind-source-truth/actions/workflows/ci.yml)
+[![CI](https://github.com/Flamki/docmind-source-truth/actions/workflows/ci.yml/badge.svg)](https://github.com/Flamki/docmind-source-truth/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-**GitHub -> https://github.com/wrlddark00-ui/docmind-source-truth**
+**GitHub -> https://github.com/Flamki/docmind-source-truth**
+**Live -> https://docmind-source-truth.vercel.app**
 
 DocMind is a polished full-stack product submission for the Digital Heroes Full Stack Developer Trial. It follows the handbook's DocQuery-style product direction: upload source documents, ask focused questions, inspect citations, and manage a document workspace with dashboard, search, filters, settings, dark mode, and error states.
 
@@ -33,7 +34,7 @@ Recommended production services:
 ## Quick Start
 
 ```bash
-git clone https://github.com/wrlddark00-ui/docmind-source-truth.git
+git clone https://github.com/Flamki/docmind-source-truth.git
 cd docmind-source-truth
 cp .env.example .env
 npm install
@@ -46,7 +47,7 @@ Local app: http://localhost:3000
 
 | Variable               | Description                                                 |
 | ---------------------- | ----------------------------------------------------------- |
-| `VITE_APP_URL`         | Absolute public URL used for canonical and social metadata. |
+| `NEXT_PUBLIC_APP_URL`  | Absolute public URL used for canonical and social metadata. |
 | `DATABASE_URL`         | Postgres connection string for production persistence.      |
 | `AUTH_SECRET`          | Session/auth signing secret. Keep server-side only.         |
 | `AUTH_TRUST_HOST`      | Auth host trust flag for production deployments.            |
@@ -79,7 +80,7 @@ The UI includes sign-in and sign-up screens, but no seeded account is included. 
 - [ ] Wire Supabase/Neon Postgres persistence.
 - [ ] Wire auth with Supabase Auth, Clerk, or Auth.js.
 - [ ] Add Playwright e2e tests for sign-in, upload, search, and document Q&A.
-- [ ] Deploy to Vercel/Netlify and replace placeholder live URLs.
+- [x] Deploy to Vercel and publish the live URL.
 
 ## Screenshots
 
